@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Books Home</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'belt_review_app/success.css' %}">
+</head>
+	<body>
+
+		<div id='header'>
+			<h1>Welcome {{request.session.user_name}}</h1>
+			<a href="/bookadd">Add Book and Review</a>
+			<a href="/logout">Logout</a>
+		</div>
+
+		<div id='content'>
+			<h1>Recent Book Reviews:</h1>
+		</div>
+
+		<div>
+			{% for review in recent_reviews %}
+				<p>title:{{review.book.title}}</p>
+				<p> <a href="/userprofile/{{current_user.id}}">{{review.user.first_name}}</a>{{review.review}}review</p>
+				<P>rating:{{review.rating}}</P>
+				<p>{{review.id}}</p>
+				<p>Posted on: {{review.created_at}}</p>
+				{% if review.user == current_user %}
+					<a href="/deletereviewfromhome/{{review.id}}">Delete</a>
+				{% endif %}
+			{% endfor %}
+
+		</div>
+
+		<div>
+			{% for review in recent_reviews%}
+				<a href="/booksprofile/{{review.book.id}}">{{review.book.title}}</a>
+			{% endfor %}
+		</div>
+
+	</body>
+</html>

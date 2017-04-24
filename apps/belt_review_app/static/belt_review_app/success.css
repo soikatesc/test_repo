@@ -1,0 +1,14 @@
+body{
+	background-color: orange;
+}
+
+#header{
+	display: flex;
+	/*background-color: green;*/
+}
+
+#header,a{
+	vertical-align: top;
+	margin-top: 20px;
+	margin-left: 50px;
+}

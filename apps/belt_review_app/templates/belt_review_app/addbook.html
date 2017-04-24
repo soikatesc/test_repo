@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Book and Review</title>
+</head>
+<body>
+	<a href="/books">Home</a>
+	<a href="/logout">Logout</a>
+
+	<div id='messeges'>
+		{% if messages%}
+			{% for message in messages%}
+				<p class="error">{{message}}</p>
+			{% endfor%}
+		{% endif %}
+		
+	</div>
+
+	<h1>Add a New Book and a Review:</h1>
+		<form action="/bookaddpost" method="POST">
+			{% csrf_token %}
+			<label for="book-title">Book Title</label>
+			<input type="text" name="book-title" ><br><br>
+
+			<label >Author:</label>
+			<input type="text" name="author"><br><br>
+
+			<label >Review:</label>
+			<textarea name="review"></textarea><br><br>
+
+  			<label >Rating:</label>
+  			<select name="rating">
+  				<option>1</option>
+  				<option>2</option>
+  				<option>3</option>
+  				<option>4</option>
+  				<option>5</option>
+  			</select><br><br>
+  				
+  			<input type="submit" value="Add a book and Review">
+  		</form>
+
+
+</body>
+</html>
